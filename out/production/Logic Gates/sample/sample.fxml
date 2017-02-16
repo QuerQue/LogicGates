@@ -16,13 +16,21 @@
       <Button fx:id="notGate" layoutX="46.0" layoutY="213.0" mnemonicParsing="false" onAction="#notButton" prefHeight="50.0" prefWidth="120.0" text="NOT" />
       <Button fx:id="nandGate" layoutX="46.0" layoutY="282.0" mnemonicParsing="false" onAction="#nandButton" prefHeight="50.0" prefWidth="120.0" text="NAND" />
       <Button fx:id="norGate" layoutX="46.0" layoutY="358.0" mnemonicParsing="false" onAction="#norButton" prefHeight="50.0" prefWidth="120.0" text="NOR" />
-      <Button fx:id="oneInputButton" layoutX="292.0" layoutY="144.0" mnemonicParsing="false" onAction="#oneInputButtonClicked" prefHeight="50.0" prefWidth="104.0" text="One input" />
+      <Button fx:id="oneInputButton" layoutX="243.0" layoutY="144.0" mnemonicParsing="false" onAction="#oneInputButtonClicked" prefHeight="50.0" prefWidth="104.0" text="One input" />
       <Text fx:id="labelInput1" layoutX="276.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input 1" />
       <TextField fx:id="outputSpace" layoutX="443.0" layoutY="308.0" prefHeight="25.0" prefWidth="104.0" />
       <Text layoutX="476.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output" />
-      <Button fx:id="twoInputButton" layoutX="451.0" layoutY="144.0" mnemonicParsing="false" onAction="#twoInputButtonClicked" prefHeight="50.0" prefWidth="104.0" text="Two input" />
+      <Button fx:id="twoInputButton" layoutX="384.0" layoutY="144.0" mnemonicParsing="false" onAction="#twoInputButtonClicked" prefHeight="50.0" prefWidth="104.0" text="Two inputs" />
       <Text fx:id="labelInput2" layoutX="276.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input 2" />
       <ChoiceBox fx:id="inputList1" layoutX="327.0" layoutY="276.0" prefHeight="25.0" prefWidth="69.0" />
       <ChoiceBox fx:id="inputList2" layoutX="327.0" layoutY="320.0" prefHeight="25.0" prefWidth="69.0" />
+      <Button fx:id="threeInputButton" layoutX="528.0" layoutY="144.0" mnemonicParsing="false" onAction="#threeInputButtonClicked" prefHeight="50.0" prefWidth="104.0" text="Three inputs" />
+      <Text fx:id="labelInput3" layoutX="276.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input 3" />
+      <ChoiceBox fx:id="inputList3" layoutX="327.0" layoutY="363.0" prefHeight="25.0" prefWidth="69.0" />
+      <Text layoutX="287.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logic Gates" wrappingWidth="217.431640625">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

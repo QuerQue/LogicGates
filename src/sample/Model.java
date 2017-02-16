@@ -12,10 +12,10 @@ public class Model
         int transformed=0;
 
         switch (value) {
-            case "zero":
+            case "0":
                 transformed = 0;
             break;
-            case "one":
+            case "1":
                 transformed = 1;
             break;
         }
@@ -23,44 +23,75 @@ public class Model
     }
 
     public int notCalculation(int value){
-        int notValue = value;
-        notValue = (notValue == 0 ? 1 : 0);
-
-        return notValue;
+        boolean notValue;
+        int convertedToInt;
+        notValue = (value == 0 ? true : false);
+        convertedToInt = (notValue) ? 1 : 0;
+        return convertedToInt;
     }
 
-    public boolean andCalculation(int value1, int value2){
+    public int andCalculation(int value1, int value2){
         boolean andValue;
-
+        int convertedToInt;
         andValue = (value1==1 && value2==1);
-
-        return andValue;
+        convertedToInt = (andValue) ? 1 : 0;
+        return convertedToInt;
     }
 
-    public boolean orCalculation(int value1, int value2){
+    public int andCalculation(int value1, int value2, int value3){
+        boolean andValue;
+        int convertedToInt;
+        andValue = (value1==1 && value2==1 && value3==1);
+        convertedToInt = (andValue) ? 1 : 0;
+        return convertedToInt;
+    }
+
+    public int orCalculation(int value1, int value2){
         boolean orValue;
-
+        int convertedToInt;
         orValue = (value1==1 || value2==1);
-
-        return orValue;
+        convertedToInt = (orValue) ? 1 : 0;
+        return convertedToInt;
     }
 
-    public boolean norCalculation(int value1, int value2){
-        boolean norValue;
-
-        norValue = !(value1==1 || value2==1);
-
-        return norValue;
+    public int orCalculation(int value1, int value2, int value3){
+        boolean orValue;
+        int convertedToInt;
+        orValue = (value1==1 || value2==1 || value3==1);
+        convertedToInt = (orValue) ? 1 : 0;
+        return convertedToInt;
     }
 
-
-    public boolean nandCalculation(int value1, int value2){
+    public int nandCalculation(int value1, int value2){
         boolean nandValue;
-
+        int convertedToInt;
         nandValue = !(value1==1 && value2==1);
-
-        return nandValue;
+        convertedToInt = (nandValue) ? 1 : 0;
+        return convertedToInt;
     }
 
+    public int nandCalculation(int value1, int value2, int value3){
+        boolean nandValue;
+        int convertedToInt;
+        nandValue = !(value1==1 && value2==1 && value3==1);
+        convertedToInt = (nandValue) ? 1 : 0;
+        return convertedToInt;
+    }
+
+    public int norCalculation(int value1, int value2){
+        boolean norValue;
+        int convertedToInt;
+        norValue = !(value1==1 || value2==1);
+        convertedToInt = (norValue) ? 1 : 0;
+        return convertedToInt;
+    }
+
+    public int norCalculation(int value1, int value2, int value3){
+        boolean norValue;
+        int convertedToInt;
+        norValue = !(value1==1 || value2==1 || value3==1);
+        convertedToInt = (norValue) ? 1 : 0;
+        return convertedToInt;
+    }
 
 }
