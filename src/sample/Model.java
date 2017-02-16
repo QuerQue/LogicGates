@@ -6,7 +6,7 @@ package sample;
 
 public class Model
 {
-
+    //transform string value to int
     public int transformToInt(String value){
 
         int transformed=0;
@@ -26,7 +26,8 @@ public class Model
         boolean notValue;
         int convertedToInt;
         notValue = (value == 0 ? true : false);
-        convertedToInt = (notValue) ? 1 : 0;
+        convertedToInt = (notValue) ? 1 : 0; //I want to return int value so need to replace true to 1 and false to 0
+
         return convertedToInt;
     }
 

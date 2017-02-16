@@ -1,15 +1,15 @@
 package sample;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-import javax.swing.*;
-
 public class Controller {
+
+    @FXML
+    private ImageView indicator;
 
     @FXML
     private Button oneInputButton;
@@ -88,13 +88,8 @@ public class Controller {
         norGate.setDisable(true);
 
         inputList1.setDisable(false);
-        inputList2.setDisable(false);
-
-        inputList2.setVisible(false);
-        inputList3.setVisible(false);
-
-        labelInput2.setVisible(false);
-        labelInput3.setVisible(false);
+        inputList2.setDisable(true);
+        inputList3.setDisable(true);
 
     }
 
@@ -108,13 +103,7 @@ public class Controller {
 
         inputList1.setDisable(false);
         inputList2.setDisable(false);
-
-        inputList1.setVisible(true);
-        inputList2.setVisible(true);
-        inputList3.setVisible(false);
-
-        labelInput2.setVisible(true);
-        labelInput3.setVisible(false);
+        inputList3.setDisable(true);
 
         flag=2;
     }
@@ -131,14 +120,6 @@ public class Controller {
         inputList2.setDisable(false);
         inputList3.setDisable(false);
 
-        inputList1.setVisible(true);
-        inputList2.setVisible(true);
-        inputList3.setVisible(true);
-
-        labelInput1.setVisible(true);
-        labelInput2.setVisible(true);
-        labelInput3.setVisible(true);
-
         flag=3;
     }
 
@@ -152,35 +133,69 @@ public class Controller {
         alert.showAndWait();
     }
 
+    private static final String IMAGE1 = "greenbulb.png";
+
     @FXML private void notButton(){
+        //check if any input option was selected (1 or 0)
         if(inputList1.getSelectionModel().isEmpty())
         {
             alertBox();
             return;
         }
-        outputSpace.setText(String.valueOf(model.notCalculation(model.transformToInt(inputList1.getValue().toString()))));
+
+        //result od NOT gate
+        int calculationResult = model.notCalculation(model.transformToInt(inputList1.getValue().toString()));
+
+        //set result to output text area
+        outputSpace.setText(String.valueOf(calculationResult));
+
+        //if returned value is 1, light the green bulb, otherwise the red one
+        if(calculationResult == 1)
+            indicator.setImage(new Image(getClass().getResource("greenbulb.png").toExternalForm()));
+        else
+            indicator.setImage(new Image(getClass().getResource("redbulb.png").toExternalForm()));
     }
 
     @FXML private void andButton(){
-        if(flag==2 && (inputList1.getSelectionModel().isEmpty() || inputList2.getSelectionModel().isEmpty()))
+        //check which button was clicked, 2 or 3 inputs and if any option was selected, if not alertBox is showed
+        if(flag==2 && (inputList1.getSelectionModel().isEmpty()
+                        || inputList2.getSelectionModel().isEmpty()))
         {
             alertBox();
             return;
         }
-        else if(flag==3 && (inputList1.getSelectionModel().isEmpty() || inputList2.getSelectionModel().isEmpty() || inputList3.getSelectionModel().isEmpty()))
+        else if(flag==3 && (inputList1.getSelectionModel().isEmpty()
+                            || inputList2.getSelectionModel().isEmpty()
+                            || inputList3.getSelectionModel().isEmpty()))
         {
             alertBox();
             return;
         }
 
-        if(flag==2)
-            outputSpace.setText(String.valueOf(model.andCalculation(model.transformToInt(inputList1.getValue().toString()), model.transformToInt(inputList2.getValue().toString()))));
+        int calculationResult=0; //result of calculation AND gate
+
+        if(flag==2) // check which button was clicked, 2 inputs or 3 inputs (different method is call)
+        {
+            calculationResult = model.andCalculation(
+                    model.transformToInt(inputList1.getValue().toString()),
+                    model.transformToInt(inputList2.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
         else if(flag==3)
-            outputSpace.setText(String.valueOf(model.andCalculation(
+        {
+            calculationResult = model.andCalculation(
                     model.transformToInt(inputList1.getValue().toString()),
                     model.transformToInt(inputList2.getValue().toString()),
-                    model.transformToInt(inputList3.getValue().toString())
-            )));
+                    model.transformToInt(inputList3.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
+
+        if(calculationResult == 1)
+            indicator.setImage(new Image(getClass().getResource("greenbulb.png").toExternalForm()));
+        else
+            indicator.setImage(new Image(getClass().getResource("redbulb.png").toExternalForm()));
     }
 
     @FXML private void orButton(){
@@ -189,19 +204,38 @@ public class Controller {
             alertBox();
             return;
         }
-        else if(flag==3 && (inputList1.getSelectionModel().isEmpty() || inputList2.getSelectionModel().isEmpty() || inputList3.getSelectionModel().isEmpty()))
+        else if(flag==3 && (inputList1.getSelectionModel().isEmpty()
+                            || inputList2.getSelectionModel().isEmpty()
+                            || inputList3.getSelectionModel().isEmpty()))
         {
             alertBox();
             return;
         }
+
+        int calculationResult=0;
+
         if(flag==2)
-            outputSpace.setText(String.valueOf(model.orCalculation(model.transformToInt(inputList1.getValue().toString()), model.transformToInt(inputList2.getValue().toString()))));
+        {
+            calculationResult = model.orCalculation(
+                    model.transformToInt(inputList1.getValue().toString()),
+                    model.transformToInt(inputList2.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
         else if(flag==3)
-            outputSpace.setText(String.valueOf(model.orCalculation(
+        {
+            calculationResult = model.orCalculation(
                     model.transformToInt(inputList1.getValue().toString()),
                     model.transformToInt(inputList2.getValue().toString()),
-                    model.transformToInt(inputList3.getValue().toString())
-            )));
+                    model.transformToInt(inputList3.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
+
+        if(calculationResult == 1)
+            indicator.setImage(new Image(getClass().getResource("greenbulb.png").toExternalForm()));
+        else
+            indicator.setImage(new Image(getClass().getResource("redbulb.png").toExternalForm()));
     }
 
     @FXML private void norButton(){
@@ -210,19 +244,38 @@ public class Controller {
             alertBox();
             return;
         }
-        else if(flag==3 && (inputList1.getSelectionModel().isEmpty() || inputList2.getSelectionModel().isEmpty() || inputList3.getSelectionModel().isEmpty()))
+        else if(flag==3 && (inputList1.getSelectionModel().isEmpty()
+                            || inputList2.getSelectionModel().isEmpty()
+                            || inputList3.getSelectionModel().isEmpty()))
         {
             alertBox();
             return;
         }
+
+        int calculationResult=0;
+
         if(flag==2)
-            outputSpace.setText(String.valueOf(model.norCalculation(model.transformToInt(inputList1.getValue().toString()), model.transformToInt(inputList2.getValue().toString()))));
+        {
+            calculationResult = model.norCalculation(
+                    model.transformToInt(inputList1.getValue().toString()),
+                    model.transformToInt(inputList2.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
         else if(flag==3)
-            outputSpace.setText(String.valueOf(model.norCalculation(
+        {
+            calculationResult = model.norCalculation(
                     model.transformToInt(inputList1.getValue().toString()),
                     model.transformToInt(inputList2.getValue().toString()),
-                    model.transformToInt(inputList3.getValue().toString())
-            )));
+                    model.transformToInt(inputList3.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
+
+        if(calculationResult == 1)
+            indicator.setImage(new Image(getClass().getResource("greenbulb.png").toExternalForm()));
+        else
+            indicator.setImage(new Image(getClass().getResource("redbulb.png").toExternalForm()));
     }
 
     @FXML private void nandButton(){
@@ -231,19 +284,38 @@ public class Controller {
             alertBox();
             return;
         }
-        else if(flag==3 && (inputList1.getSelectionModel().isEmpty() || inputList2.getSelectionModel().isEmpty() || inputList3.getSelectionModel().isEmpty()))
+        else if(flag==3 && (inputList1.getSelectionModel().isEmpty()
+                            || inputList2.getSelectionModel().isEmpty()
+                            || inputList3.getSelectionModel().isEmpty()))
         {
             alertBox();
             return;
         }
+
+        int calculationResult=0;
+
         if(flag==2)
-            outputSpace.setText(String.valueOf(model.nandCalculation(model.transformToInt(inputList1.getValue().toString()), model.transformToInt(inputList2.getValue().toString()))));
+        {
+            calculationResult = model.nandCalculation(
+                    model.transformToInt(inputList1.getValue().toString()),
+                    model.transformToInt(inputList2.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
         else if(flag==3)
-            outputSpace.setText(String.valueOf(model.nandCalculation(
+        {
+            calculationResult = model.nandCalculation(
                     model.transformToInt(inputList1.getValue().toString()),
                     model.transformToInt(inputList2.getValue().toString()),
-                    model.transformToInt(inputList3.getValue().toString())
-            )));
+                    model.transformToInt(inputList3.getValue().toString()));
+
+            outputSpace.setText(String.valueOf(calculationResult));
+        }
+
+        if(calculationResult == 1)
+            indicator.setImage(new Image(getClass().getResource("greenbulb.png").toExternalForm()));
+        else
+            indicator.setImage(new Image(getClass().getResource("redbulb.png").toExternalForm()));
     }
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -18,8 +19,8 @@
       <Button fx:id="norGate" layoutX="46.0" layoutY="358.0" mnemonicParsing="false" onAction="#norButton" prefHeight="50.0" prefWidth="120.0" text="NOR" />
       <Button fx:id="oneInputButton" layoutX="243.0" layoutY="144.0" mnemonicParsing="false" onAction="#oneInputButtonClicked" prefHeight="50.0" prefWidth="104.0" text="One input" />
       <Text fx:id="labelInput1" layoutX="276.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input 1" />
-      <TextField fx:id="outputSpace" layoutX="443.0" layoutY="308.0" prefHeight="25.0" prefWidth="104.0" />
-      <Text layoutX="476.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output" />
+      <TextField fx:id="outputSpace" layoutX="443.0" layoutY="320.0" prefHeight="25.0" prefWidth="104.0" />
+      <Text layoutX="476.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Output" />
       <Button fx:id="twoInputButton" layoutX="384.0" layoutY="144.0" mnemonicParsing="false" onAction="#twoInputButtonClicked" prefHeight="50.0" prefWidth="104.0" text="Two inputs" />
       <Text fx:id="labelInput2" layoutX="276.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input 2" />
       <ChoiceBox fx:id="inputList1" layoutX="327.0" layoutY="276.0" prefHeight="25.0" prefWidth="69.0" />
@@ -32,5 +33,10 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Text>
+      <ImageView fx:id="indicator" fitHeight="41.0" fitWidth="44.0" layoutX="580.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@redbulb.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
