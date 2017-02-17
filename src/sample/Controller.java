@@ -90,6 +90,10 @@ public class Controller {
         inputList1.setDisable(false);
         inputList2.setDisable(true);
         inputList3.setDisable(true);
+        outputSpace.setText("");
+        inputList1.setValue(null);
+        inputList2.setValue(null);
+        inputList3.setValue(null);
 
     }
 
@@ -104,8 +108,12 @@ public class Controller {
         inputList1.setDisable(false);
         inputList2.setDisable(false);
         inputList3.setDisable(true);
+        outputSpace.setText("");
+        inputList1.setValue(null);
+        inputList2.setValue(null);
+        inputList3.setValue(null);
 
-        flag=2;
+        flag=2; // when "Two inputs" button clicked set flag on 2, (depends on which button was clicked 2 or 3 inputs, different method will be called)
     }
 
     @FXML private void threeInputButtonClicked()
@@ -119,6 +127,10 @@ public class Controller {
         inputList1.setDisable(false);
         inputList2.setDisable(false);
         inputList3.setDisable(false);
+        outputSpace.setText("");
+        inputList1.setValue(null);
+        inputList2.setValue(null);
+        inputList3.setValue(null);
 
         flag=3;
     }
